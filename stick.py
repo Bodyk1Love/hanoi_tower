@@ -1,8 +1,7 @@
 class Stick:
-    def __init__(self, place: int, disks: list = []) -> None:
+    def __init__(self, place: int, disks: list) -> None:
         self.place = place
-        self.disks = disks
+        self.disks = disks or ['|'] * 3
         
     def print_level(self, level):
-        if level <= len(self.disks) - 1:
-            print(self.disks[level])
+        print("{: >10}".format(str(self.disks[level])), end ="")
