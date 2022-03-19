@@ -1,5 +1,13 @@
+from telnetlib import GA
 from disk import Disk
 from stick import Stick
+from itertools import permutations
+
+HUMANIZED_INDEXES = {
+    0: 'first',
+    1: 'second',
+    2: 'third'
+}
 
 class Game:
     def __init__(self, disk_count) -> None:
@@ -16,7 +24,13 @@ class Game:
         sticks = [Stick(i, []) for i in range(3)]
         sticks[0].disks = [Disk(i+1) for i in range(self.disk_count)]
         return sticks
-    
+
+for move_from, move_to in permutations(HUMANIZED_INDEXES.keys(), 2):
+    def _move_to(self, move_from=move_from, move_to=move_to):
+        pass
+    name = HUMANIZED_INDEXES[move_from] + "_to_" + HUMANIZED_INDEXES[move_to]
+    setattr(Game, name, _move_to)
+
     
         
     
