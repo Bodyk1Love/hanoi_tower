@@ -27,7 +27,14 @@ class Game:
 
 for move_from, move_to in permutations(HUMANIZED_INDEXES.keys(), 2):
     def _move_to(self, move_from=move_from, move_to=move_to):
-        pass
+        try:
+            selected_disk = self.sticks[move_from].disks.pop(0)
+            self.sticks[move_to].disks.insert(0, selected_disk)
+            self.print_sticks()
+        except IndexError:
+            print("Nothing to move")
+            
+        
     name = HUMANIZED_INDEXES[move_from] + "_to_" + HUMANIZED_INDEXES[move_to]
     setattr(Game, name, _move_to)
 
