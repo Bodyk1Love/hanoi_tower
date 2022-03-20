@@ -13,6 +13,7 @@ class Game:
     def __init__(self, disk_count) -> None:
         self.disk_count = disk_count
         self.sticks = self.__initialize_sticks()
+        self.print_sticks()
         
     def print_sticks(self):
         for i in range(self.disk_count - 1, -1, -1):
