@@ -8,3 +8,9 @@ class Stick:
             print("{: >10}".format(str(self.disks[level])), end ="")
         else:
             print("{: >10}".format("|"), end ="")
+    
+    def is_move_possible(self, disk):
+        try:
+            return disk.size < self.disks[0].size
+        except IndexError:
+            return True

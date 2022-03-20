@@ -9,6 +9,9 @@ HUMANIZED_INDEXES = {
     2: 'third'
 }
 
+class ImpossibleMove(Exception):
+    pass
+
 class Game:
     def __init__(self, disk_count) -> None:
         self.disk_count = disk_count
@@ -29,11 +32,15 @@ for move_from, move_to in permutations(HUMANIZED_INDEXES.keys(), 2):
     def _move_to(self, move_from=move_from, move_to=move_to):
         try:
             selected_disk = self.sticks[move_from].disks.pop(0)
+            if not self.sticks[move_to].is_move_possible(selected_disk):
+                self.sticks[move_from].disks.insert(0, selected_disk)
+                raise ImpossibleMove
             self.sticks[move_to].disks.insert(0, selected_disk)
             self.print_sticks()
         except IndexError:
             print("Nothing to move")
-            
+        except ImpossibleMove:
+            print("Move is not possible")
         
     name = HUMANIZED_INDEXES[move_from] + "_to_" + HUMANIZED_INDEXES[move_to]
     setattr(Game, name, _move_to)
