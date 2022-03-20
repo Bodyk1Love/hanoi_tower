@@ -1,4 +1,4 @@
-from telnetlib import GA
+import sys
 from disk import Disk
 from stick import Stick
 from itertools import permutations
@@ -20,6 +20,9 @@ class Game:
             for stick in self.sticks:
                 stick.print_level(i)
             print()
+
+    def check_win(self):
+        return len(self.sticks[-1].disks) == self.disk_count
         
     def __initialize_sticks(self):
         sticks = [Stick(i, self.disk_count, []) for i in range(3)]
@@ -35,6 +38,10 @@ for move_from, move_to in permutations(HUMANIZED_INDEXES.keys(), 2):
         if not_inserted_disk:
             self.sticks[move_from].insert_disk(not_inserted_disk)
         self.print_sticks()
+            
+        if self.check_win():
+            print("YOU WIN!!!")
+            sys.exit()
         
         
     name = HUMANIZED_INDEXES[move_from] + "_to_" + HUMANIZED_INDEXES[move_to]
