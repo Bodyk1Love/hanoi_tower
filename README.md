@@ -5,7 +5,7 @@
 
 ## use Python3
 ```
-<python3 main.py>
+python3 main.py
 ```
 
 - First enter of number of disk you want to play with (a number between 3 and 10)
