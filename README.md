@@ -1,6 +1,6 @@
 # Simple Hanoi Tower game
 
-[![N|HANOI](https://upload.wikimedia.org/wikipedia/commons/0/07/Tower_of_Hanoi.jpeg](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
+[![N|HANOI](https://upload.wikimedia.org/wikipedia/commons/0/07/Tower_of_Hanoi.jpeg)](https://en.wikipedia.org/wiki/Tower_of_Hanoi)
 
 
 ## use Python3
